@@ -63,11 +63,12 @@ class ThreadController extends Controller
     return view('thread.show', compact('thread', 'category', 'created_user', 'user', 'comments', 'categories'));
   }
 
-  public function post()
+  public function post($categoryId = null)
   {
     $categories = Category::query()->orderBy('id')->pluck('name', 'id');
     Log::info('$categories', [$categories]);
-    return view('thread.post', compact('categories'));
+
+    return view('thread.post', compact('categories', 'categoryId'));
   }
 
   public function create(ThreadRequest $request)

@@ -37,7 +37,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{!! Form::label('name', '氏名') !!}</td>
+                        <td>{!! Form::label('name', 'ニックネーム') !!}</td>
                         <td>
                             @php
                                 if (!empty($user->nickname)) {

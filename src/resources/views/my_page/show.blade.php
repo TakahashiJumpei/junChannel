@@ -25,7 +25,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>名前</td>
+                        <td>ニックネーム</td>
                         <td>
                             @if (!empty($user->nickname))
                                 {{ $user->nickname }}

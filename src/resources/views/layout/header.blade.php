@@ -37,7 +37,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('signout') }}">ログアウト</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 通知
@@ -50,7 +50,7 @@
                                 </li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                     @else
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('signup') }}">会員登録</a>

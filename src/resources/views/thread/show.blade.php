@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="card-text join-category">カテゴリ：{{ $category->name }}</span>
-                        <button class="btn btn-primary btn-sm">スレッドをお気に入り登録</button>
+                        {{-- <button class="btn btn-primary btn-sm">スレッドをお気に入り登録</button> --}}
                     </div>
                     <h3 class="card-title font-weight-bold mt-2 mb-4"><span>{{ $thread->name }}</span></h3>
                     <h4 class="card-text mb-3">{{ $thread->explanation }}</h4>

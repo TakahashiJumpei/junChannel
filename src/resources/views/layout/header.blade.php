@@ -17,8 +17,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="スレッド/カテゴリ の検索をしてみよう"
-                            aria-label="Search">
+                        <input class="form-control mr-sm-2" type="search" placeholder="スレッドの検索" aria-label="Search">
                         <button class="btn btn-dark my-2 my-sm-0" type="submit">検索</button>
                     </form>
 
@@ -37,7 +36,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('signout') }}">ログアウト</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 通知
@@ -50,7 +49,7 @@
                                 </li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                     @else
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('signup') }}">会員登録</a>
@@ -63,4 +62,16 @@
             </div>
         </nav>
     </header>
+
+    <style>
+        input {
+            width: 300px !important;
+        }
+
+        @media screen and (min-width:450px) {
+            input {
+                width: 400px !important;
+            }
+        }
+    </style>
 @endsection

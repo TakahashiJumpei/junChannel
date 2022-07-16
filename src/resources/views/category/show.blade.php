@@ -17,7 +17,7 @@
                     <div class="d-flex justify-content-start align-items-center">
                         {{-- 新規スレッド作成 --}}
                         <div class="d-flex justify-content-left">
-                            <a href="{{ url('thread/post') }}" class="btn btn-dark">新規スレッド作成</a>
+                            <a href="{{ url('thread/post', $category->id) }}" class="btn btn-dark">新規スレッド作成</a>
                         </div>
                         {{-- このカテゴリ内のスレッド検索 --}}
                         <form class="form-inline ml-3">

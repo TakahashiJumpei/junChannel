@@ -25,7 +25,7 @@
             </div>
             <div class="form-group mt-4">
                 {!! Form::label('selectCategory', 'カテゴリ') !!}
-                {!! Form::select('categoryId', $categories, null, [
+                {!! Form::select('categoryId', $categories, $categoryId, [
                     'class' => 'form-control',
                     'id' => 'selectCategory',
                     'placeholder' => '選択してください',

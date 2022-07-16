@@ -17,8 +17,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="スレッド/カテゴリ の検索をしてみよう"
-                            aria-label="Search">
+                        <input class="form-control mr-sm-2" type="search" placeholder="スレッドの検索" aria-label="Search">
                         <button class="btn btn-dark my-2 my-sm-0" type="submit">検索</button>
                     </form>
 
@@ -63,4 +62,16 @@
             </div>
         </nav>
     </header>
+
+    <style>
+        input {
+            width: 300px !important;
+        }
+
+        @media screen and (min-width:450px) {
+            input {
+                width: 400px !important;
+            }
+        }
+    </style>
 @endsection

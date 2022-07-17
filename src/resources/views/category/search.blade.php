@@ -15,7 +15,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h3 class="card-title font-weight-bold"><span>{{ $category->name }}</span></h3>
+                        <a class="card-title font-weight-bold h3 text-dark"
+                            href="{{ url('category/show', $category->id) }}">{{ $category->name }}</a>
                         <span class="card-text join-category">全{{ $concatenated_threads_count }}件</span>
                     </div>
                     <div class="d-flex justify-content-start align-items-center">
@@ -106,6 +107,12 @@
         tr {
             background-color: white;
         }
+
+        a.text-dark:hover {
+            color: #ccc !important;
+            text-decoration: none;
+        }
+
     </style>
 
 @endsection

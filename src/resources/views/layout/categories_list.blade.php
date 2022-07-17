@@ -4,7 +4,7 @@
     {{-- 基本はスクロールですべて辿れるようにする --}}
     <div class="col-md-3">
         <div class="mt-5 mb-5">
-            <table class="table table-fixed">
+            <table class="table table-fixed table_sticky">
                 <thead class="table-bordered table-sm thead-light">
                     <tr>
                         <th colspan="1">
@@ -62,6 +62,26 @@
 
         tr.active td .btn-link:hover {
             text-decoration: none;
+        }
+
+        .col-md-3 {
+            position: sticky !important;
+            height: 65vh;
+            top: 48px !important;
+        }
+
+        /*　スクロールバーの実装 */
+        .table_sticky {
+            display: block;
+            overflow-y: auto;
+            height: 65vh;
+            border-collapse: collapse;
+        }
+
+        .table_sticky thead th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
         }
     </style>
 

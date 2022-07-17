@@ -23,7 +23,7 @@
                         </div>
                         {{-- このカテゴリ内のスレッド検索 --}}
                         {!! Form::open([
-                            'url' => "category/search",
+                            'url' => 'category/search',
                             'method' => 'get',
                             'files' => true,
                             'class' => 'form-inline ml-3 my-2 my-lg-0',
@@ -46,8 +46,9 @@
                     <h3 class="card-title font-weight-bold mb-4"><span>スレッドの検索結果</span></h3>
                     <h4 class="card-title font-weight-bold "><span>検索カテゴリ：{{ $category->name }}</span></h4>
                     <h4 class="card-title font-weight-bold "><span>検索文字列：「{{ $q }}」</span></h4>
-                    @if ($threads_count > 0)
-                        <h4 class="card-title font-weight-bold "><span>{{ $threads_count }}件ヒットしました。</span></h4>
+                    @if ($concatenated_threads_count > 0)
+                        <h4 class="card-title font-weight-bold "><span>{{ $concatenated_threads_count }}件ヒットしました。</span>
+                        </h4>
                     @else
                         <h4 class="card-title font-weight-bold "><span>検索条件に合致するスレッドは見つかりませんでした。</span></h4>
                     @endif
@@ -55,7 +56,7 @@
             </div>
         </div>
 
-        @if ($threads)
+        @if ($concatenated_threads)
             <div class="mt-4 mb-4">
                 <table class="table">
                     <thead class="table-bordered table-sm thead-light">
@@ -66,20 +67,24 @@
                         </tr>
                     </thead>
                     <tbody class="table-bordered table-sm">
-                        @foreach ($threads as $thread)
+                        @foreach ($concatenated_threads as $concatenated_thread)
                             <tr>
                                 {{-- 所属するカテゴリも表示させる --}}
                                 <td class="d-flex justify-content-start align-items-center">
                                     <div class="ml-2">[{{ $loop->index + 1 }}]</div>
-                                    <a href="{{ url('thread/show', $thread->id) }}"
-                                        class="btn btn-link">{{ $thread->name }}</a>
-                                    {{-- <div class="ml-2">（{{ $thread->count_comment }}件）</div> --}}
-                                    {{-- @if (isset($thread->recently_comment_datetime))
-                                      <div class="ml-2">
-                                          {{ $thread->recently_comment_datetime->format('m月d日 H:i') }}
-                                      </div>
-                                  @else
-                                  @endif --}}
+                                    <a href="{{ url('thread/show', $concatenated_thread->id) }}"
+                                        class="btn btn-link">{{ $concatenated_thread->name }}</a>
+                                    @if (isset($concatenated_thread->count_comment))
+                                        <div class="ml-2">（{{ $concatenated_thread->count_comment }}件）</div>
+                                    @else
+                                        <div class="ml-2">（0件）</div>
+                                    @endif
+                                    @if (isset($concatenated_thread->recently_comment_datetime))
+                                        <div class="ml-2">
+                                            {{ $concatenated_thread->recently_comment_datetime->format('m月d日 H:i') }}
+                                        </div>
+                                    @else
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

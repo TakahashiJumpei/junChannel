@@ -16,7 +16,9 @@
                     <div class="d-flex justify-content-between">
                         <a class="card-title font-weight-bold h3 text-dark"
                             href="{{ url('category/show', $category->id) }}">{{ $category->name }}</a>
-                        <span class="card-text join-category">全{{ $concatenated_threads_count }}件</span>
+                        @if ($concatenated_threads_count)
+                            <span class="card-text join-category">全{{ $concatenated_threads_count }}件</span>
+                        @endif
                     </div>
                     <div class="d-flex justify-content-start align-items-center">
                         {{-- 新規スレッド作成 --}}

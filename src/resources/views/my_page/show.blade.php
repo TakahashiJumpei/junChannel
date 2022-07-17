@@ -73,6 +73,11 @@
                                         </div>
                                     @else
                                     @endif
+                                    <div class="ml-3">
+                                        [ <a
+                                            href="{{ url('category/show', $created_thread->category_id) }}">{{ $created_thread->category_name }}</a>
+                                        ]
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -107,6 +112,11 @@
                                     <div class="ml-2">（{{ $commented_thread->count_comment }}件）</div>
                                     <div class="ml-2">
                                         {{ $commented_thread->recently_comment_datetime->format('m月d日 H:i') }}
+                                    </div>
+                                    <div class="ml-3">
+                                        [ <a
+                                            href="{{ url('category/show', $commented_thread->category_id) }}">{{ $commented_thread->category_name }}</a>
+                                        ]
                                     </div>
                                 </td>
                             </tr>

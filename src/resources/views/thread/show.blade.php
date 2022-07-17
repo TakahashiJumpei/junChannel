@@ -114,6 +114,17 @@
                         }
                     @endphp
                     <h5 class="mb-3"><span>投稿時の名前：{{ $nickname }}</span></h5>
+                    @if ($errors->any())
+                        <div class="error-text mb-1">
+                            <span class="text-danger">コメントの投稿に失敗しました。</span>
+                        </div>
+                    @endif
+                    {{-- コメント欄が空入力だった際にエラーメッセージの表示 --}}
+                    @error('content')
+                        <div class="error-text mb-1">
+                            <span class="text-danger">{{ $message }}</span>
+                        </div>
+                    @enderror
                     {!! Form::textarea('content', null, [
                         'class' => 'form-control',
                         'id' => 'content',
@@ -137,5 +148,26 @@
         tr {
             background-color: white;
         }
+
+        .error-text {
+            font-size: 16px;
+        }
     </style>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        // ページが読み込まれたら実行
+        $(() => {
+            let top = 0;
+            $('.error-text').each((index, element) => {
+                let newTop = $(element).parent().offset().top;
+                if (top === 0 || top > newTop) {
+                    top = newTop;
+                }
+            });
+            $('html, body').animate({
+                scrollTop: top
+            }, 'fast');
+        });
+    </script>
 @endsection

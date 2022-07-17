@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Comment;
 use App\Models\Guest;
 use App\Http\Requests\ThreadRequest;
+use App\Http\Requests\CommentRequest;
 
 use Auth;
 
@@ -108,8 +109,10 @@ class ThreadController extends Controller
     // return redirect()->route('thread.show', ['threadId' => $thread->id]);
   }
 
-  public function commentPost(Request $request)
+  public function commentPost(CommentRequest $request)
   {
+    //コメント欄で空で入力した際にDBエラーとなるのでバリデーションする
+    //$validatedRequest = $request->validated();
     /**
      * スレッドにコメントを投稿
      * コメントテーブルにコメントを新規追加する処理

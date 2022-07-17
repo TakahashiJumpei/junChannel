@@ -32,6 +32,9 @@ class TopController extends Controller
           Log::info('$recently_comment_datetime', [$recently_comment_datetime]);
           $recently_created_thread->recently_comment_datetime = $recently_comment_datetime->created_at;
         }
+        //各スレッドに対してカテゴリ名を紐づける
+        $category = Category::where('id', $recently_created_thread->category_id)->first();
+        $recently_created_thread->category_name = $category->name;
       }
       Log::info('$recently_created_threads', [$recently_created_threads]);
     }
@@ -64,10 +67,17 @@ class TopController extends Controller
         $recently_comment_datetime = Comment::orderBy('id', 'DESC')->where('thread_id', $recently_commented_thread->id)->first();
         Log::info('$recently_comment_datetime', [$recently_comment_datetime]);
         $recently_commented_thread->recently_comment_datetime = $recently_comment_datetime->created_at;
+
+        //各スレッドに対してカテゴリ名を紐づける
+        $category = Category::where('id', $recently_commented_thread->category_id)->first();
+        $recently_commented_thread->category_name = $category->name;
       }
       //dd($recently_commented_threads);
     }
+    Log::info('$recently_commented_threads', [$recently_commented_threads]);
+    //dd($recently_commented_threads);
 
+    //////////////////////////////////////////
     // DBからすべてのカテゴリを取得
     $categories = Category::get();
     if ($categories->isEmpty()) {

@@ -93,7 +93,7 @@ class CategoryController extends Controller
       Log::info('$concatenated_threads_count', [$concatenated_threads_count]);
     }
 
-    return view('category.show', compact('category', 'categories', 'concatenated_threads', 'concatenated_threads_count'));
+    return view('category.show', compact('categoryId', 'category', 'categories', 'concatenated_threads', 'concatenated_threads_count'));
   }
 
   public function search(Request $request)

@@ -23,6 +23,7 @@ class ThreadController extends Controller
     //ユーザテーブルから表示中のスレッドIDに引っかかるユーザのみを抽出
     $category = Category::where('id', $thread->category_id)->first();
     Log::info('$category', [$category]);
+    $categoryId = $thread->category_id;
 
     //ユーザテーブルから表示中のスレッドIDに引っかかるユーザのみを抽出
     $created_user = User::where('id', $thread->creater_id)->first();
@@ -60,7 +61,7 @@ class ThreadController extends Controller
     }
     Log::info('$categories', [$categories]);
 
-    return view('thread.show', compact('thread', 'category', 'created_user', 'user', 'comments', 'categories'));
+    return view('thread.show', compact('categoryId', 'thread', 'category', 'created_user', 'user', 'comments', 'categories'));
   }
 
   public function post($categoryId = null)

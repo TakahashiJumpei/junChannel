@@ -16,15 +16,25 @@
                     <h3 class="card-title font-weight-bold"><span>{{ $category->name }}</span></h3>
                     <div class="d-flex justify-content-start align-items-center">
                         {{-- 新規スレッド作成 --}}
+                        {{-- レスポンシブ対応は優先的に --}}
                         <div class="d-flex justify-content-left">
                             <a href="{{ url('thread/post', $category->id) }}" class="btn btn-dark">新規スレッド作成</a>
                         </div>
                         {{-- このカテゴリ内のスレッド検索 --}}
-                        <form class="form-inline ml-3">
-                            <input class="form-control mr-sm-2" type="search" placeholder="カテゴリ内検索" aria-label="Search">
-                        </form>
+                        {!! Form::open([
+                            'url' => "category/search",
+                            'method' => 'get',
+                            'files' => true,
+                            'class' => 'form-inline ml-3 my-2 my-lg-0',
+                        ]) !!}
+                        {!! Form::hidden('categoryId', $category->id) !!}
+                        {!! Form::search('str', '', ['class' => 'form-control mr-sm-2', 'placeholder' => 'カテゴリ内スレッド検索']) !!}
+                        {!! Form::button('検索', [
+                            'class' => 'btn btn-dark my-2 my-sm-0',
+                            'type' => 'submit',
+                        ]) !!}
+                        {!! Form::close() !!}
                     </div>
-
                 </div>
             </div>
         </div>

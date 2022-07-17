@@ -88,4 +88,32 @@ class CategoryController extends Controller
 
     return view('category.show', compact('category', 'categories', 'recently_commented_threads'));
   }
+
+  public function search(Request $request)
+  {
+    //dd($request);
+    // DBからすべてのカテゴリを取得
+    $categories = Category::get();
+    if ($categories->isEmpty()) {
+      $categories = null;
+    }
+    Log::info('$categories', [$categories]);
+
+    Log::info('$request->categoryId', [$request->categoryId]);
+    $category = Category::where('id', $request->categoryId)->first();
+
+    //入力した文字列に部分一致で引っかかるスレッドを取得
+    //特別な追加条件として、カテゴリを指定する。
+    Log::info('$request->str', [$request->str]);
+    $str = $request->str;
+    $threads = Thread::where('category_id', $request->categoryId)->where('name', 'like', "%$str%")->get();
+    $threads_count = Thread::where('category_id', $request->categoryId)->where('name', 'like', "%$str%")->get()->count();
+    Log::info('$threads', [$threads]);
+    Log::info('$threads_count', [$threads_count]);
+
+    if ($threads->isEmpty()) {
+      $threads = null;
+    }
+    return view('category.search', compact('str', 'threads', 'threads_count', 'category', 'categories'));
+  }
 }

@@ -36,7 +36,11 @@ class ThreadController extends Controller
 
     //このスレッドに紐づいているコメントをすべて取得
     $comments = Comment::where('thread_id', $thread->id)->get();
+    $comment_count = Comment::where('thread_id', $thread->id)->get()->count();
     Log::info('$comments', [$comments]);
+    Log::info('$comment_count', [$comment_count]);
+    //dd($comment_count);
+
     if ($comments->isEmpty()) {
       Log::info('$commentsは空です');
       $comments = null;
@@ -61,7 +65,7 @@ class ThreadController extends Controller
     }
     Log::info('$categories', [$categories]);
 
-    return view('thread.show', compact('categoryId', 'thread', 'category', 'created_user', 'user', 'comments', 'categories'));
+    return view('thread.show', compact('categoryId', 'thread', 'category', 'created_user', 'user', 'comments', 'comment_count', 'categories'));
   }
 
   public function post($categoryId = null)

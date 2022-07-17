@@ -10,7 +10,7 @@
 
     <div class="col-md-9">
         {{-- スレッド表題 --}}
-        <div class="h3 mt-5 mb-3">
+        <div class="h3 mt-5 mb-5">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
@@ -27,7 +27,10 @@
         </div>
 
         {{-- 表示数の設定機能（「全部」、「最新５０件」、「1-100」のページング） --}}
-
+        {{-- 表示中スレッドのコメント数を表示 --}}
+        <div class="d-flex justify-content-end align-items-center">
+            <h5 class="card-text">全{{ $comment_count }}件</h5>
+        </div>
 
         {{-- コメント一覧 --}}
         {{-- //コメントが0件の場合 --}}
@@ -41,7 +44,7 @@
           ・いいね、badボタン（DB未搭載）
           ・通報ボタン（コメントしたユーザには非表示）
           ・削除ボタン（管理人とそのコメントをしたユーザだけ） --}}
-        <div class="h3 mt-5 mb-3">
+        <div class="h3 mt-2 mb-3">
             @if ($comments)
                 @foreach ($comments as $comment)
                     <div class="card">

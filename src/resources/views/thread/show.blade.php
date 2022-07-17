@@ -130,5 +130,9 @@
         .join-category {
             font-size: 16px;
         }
+
+        tr {
+            background-color: white;
+        }
     </style>
 @endsection

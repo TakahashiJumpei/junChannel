@@ -115,4 +115,10 @@
 
     </div>
 
+    <style>
+        tr {
+            background-color: white;
+        }
+    </style>
+
 @endsection

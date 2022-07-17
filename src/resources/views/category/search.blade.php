@@ -1,8 +1,9 @@
 @extends('layout.app')
 
-@section('title', "{$category->name}")
+@section('title', 'カテゴリ内スレッド検索')
 @include('layout.header')
 @include('layout.footer')
+
 
 @section('content')
 
@@ -38,21 +39,37 @@
                 </div>
             </div>
         </div>
+        {{-- 検索条件 --}}
+        <div class="h3 mt-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title font-weight-bold mb-4"><span>スレッドの検索結果</span></h3>
+                    <h4 class="card-title font-weight-bold "><span>検索カテゴリ：{{ $category->name }}</span></h4>
+                    <h4 class="card-title font-weight-bold "><span>検索文字列：「{{ $q }}」</span></h4>
+                    @if ($concatenated_threads_count > 0)
+                        <h4 class="card-title font-weight-bold "><span>{{ $concatenated_threads_count }}件ヒットしました。</span>
+                        </h4>
+                    @else
+                        <h4 class="card-title font-weight-bold "><span>検索条件に合致するスレッドは見つかりませんでした。</span></h4>
+                    @endif
+                </div>
+            </div>
+        </div>
 
-        {{-- スレッドランキング（勢いのあるスレッド）の表示。コメントが最新のスレッド順に一覧表示 --}}
-        <div class="mt-5 mb-5">
-            <table class="table">
-                <thead class="table-bordered table-sm thead-light">
-                    <tr>
-                        <th colspan="1">
-                            スレッド一覧
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="table-bordered table-sm">
-                    @if ($concatenated_threads)
+        @if ($concatenated_threads)
+            <div class="mt-4 mb-4">
+                <table class="table">
+                    <thead class="table-bordered table-sm thead-light">
+                        <tr>
+                            <th colspan="1">
+                                ヒットしたスレッド一覧
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered table-sm">
                         @foreach ($concatenated_threads as $concatenated_thread)
                             <tr>
+                                {{-- 所属するカテゴリも表示させる --}}
                                 <td class="d-flex justify-content-start align-items-center">
                                     <div class="ml-2">[{{ $loop->index + 1 }}]</div>
                                     <a href="{{ url('thread/show', $concatenated_thread->id) }}"
@@ -71,18 +88,11 @@
                                 </td>
                             </tr>
                         @endforeach
-                    @else
-                        <tr>
-                            <td>
-                                このカテゴリに属するスレッドはありません。
-                                <br>
-                                スレッドを作成してみよう！
-                            </td>
-                        </tr>
-                    @endif
-                </tbody>
-            </table>
-        </div>
+
+                    </tbody>
+                </table>
+            </div>
+        @endif
     </div>
 
 @endsection

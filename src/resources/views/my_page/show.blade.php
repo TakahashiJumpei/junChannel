@@ -122,7 +122,7 @@
             </table>
         </div>
 
-        <div class="mb-5">
+        {{-- <div class="mb-5">
             <table class="table">
                 <thead class="table-bordered table-sm thead-light">
                     <tr>
@@ -151,37 +151,7 @@
                     @endif
                 </tbody>
             </table>
-        </div>
-
-        {{-- <table class="table">
-    <thead class="table-bordered table-sm thead-light">
-        <tr>
-            <th colspan="1">
-                作成したスレッド一覧
-            </th>
-            <th colspan="1">
-                コメントしたスレッド一覧
-            </th>
-            <th colspan="1">
-                お気に入りしたスレッド一覧
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <button type="button" class="btn btn-link">スレッド1</button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-link">スレッド15</button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-link">スレッド39</button>
-            </td>
-        </tr>
-    </tbody>
-</table> --}}
-
+        </div> --}}
 
 
     </div>

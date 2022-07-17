@@ -22,7 +22,7 @@
                         </div>
                         {{-- このカテゴリ内のスレッド検索 --}}
                         {!! Form::open([
-                            'url' => "category/search",
+                            'url' => 'category/search',
                             'method' => 'get',
                             'files' => true,
                             'class' => 'form-inline ml-3 my-2 my-lg-0',
@@ -50,17 +50,24 @@
                     </tr>
                 </thead>
                 <tbody class="table-bordered table-sm">
-                    @if ($recently_commented_threads)
-                        @foreach ($recently_commented_threads as $recently_commented_thread)
+                    @if ($concatenated_threads)
+                        @foreach ($concatenated_threads as $concatenated_thread)
                             <tr>
                                 <td class="d-flex justify-content-start align-items-center">
                                     <div class="ml-2">[{{ $loop->index + 1 }}]</div>
-                                    <a href="{{ url('thread/show', $recently_commented_thread->id) }}"
-                                        class="btn btn-link">{{ $recently_commented_thread->name }}</a>
-                                    <div class="ml-2">（{{ $recently_commented_thread->count_comment }}件）</div>
-                                    <div class="ml-2">
-                                        {{ $recently_commented_thread->recently_comment_datetime->format('m月d日 H:i') }}
-                                    </div>
+                                    <a href="{{ url('thread/show', $concatenated_thread->id) }}"
+                                        class="btn btn-link">{{ $concatenated_thread->name }}</a>
+                                    @if (isset($concatenated_thread->count_comment))
+                                        <div class="ml-2">（{{ $concatenated_thread->count_comment }}件）</div>
+                                    @else
+                                        <div class="ml-2">（0件）</div>
+                                    @endif
+                                    @if (isset($concatenated_thread->recently_comment_datetime))
+                                        <div class="ml-2">
+                                            {{ $concatenated_thread->recently_comment_datetime->format('m月d日 H:i') }}
+                                        </div>
+                                    @else
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

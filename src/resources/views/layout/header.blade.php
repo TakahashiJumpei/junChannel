@@ -16,14 +16,17 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="スレッドの検索" aria-label="Search">
-                        <button class="btn btn-dark my-2 my-sm-0" type="submit">検索</button>
-                    </form>
+                    {!! Form::open(['url' => '/search', 'method' => 'get', 'files' => true, 'class' => 'form-inline my-2 my-lg-0']) !!}
+                    {!! Form::search('str', '', ['class' => 'form-control mr-sm-2', 'placeholder' => 'スレッドの検索']) !!}
+                    {!! Form::button('検索', [
+                        'class' => 'btn btn-outline-light my-2 my-sm-0',
+                        'type' => 'submit',
+                    ]) !!}
+                    {!! Form::close() !!}
 
                     @if (Auth::guard('user')->check())
                         <?php $user = Auth::guard('user')->user(); ?>
-                        <li class="nav-item">
+                        <li class="nav-item ml-2">
                             <a class="nav-link text-light" href="{{ url('my_page', $user->id) }}">
                                 @if (!empty($user->nickname))
                                     {{ $user->nickname }}

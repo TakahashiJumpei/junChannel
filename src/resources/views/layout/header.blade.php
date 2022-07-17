@@ -17,7 +17,10 @@
                 </ul>
                 <ul class="navbar-nav">
                     {!! Form::open(['url' => '/search', 'method' => 'get', 'files' => true, 'class' => 'form-inline my-2 my-lg-0']) !!}
-                    {!! Form::search('str', '', ['class' => 'form-control mr-sm-2', 'placeholder' => 'スレッドの検索']) !!}
+                    {!! Form::search('str', $str ?? '', [
+                        'class' => 'form-control mr-sm-2',
+                        'placeholder' => 'スレッドの検索',
+                    ]) !!}
                     {!! Form::button('検索', [
                         'class' => 'btn btn-outline-light my-2 my-sm-0',
                         'type' => 'submit',

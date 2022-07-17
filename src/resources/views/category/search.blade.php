@@ -29,7 +29,7 @@
                             'class' => 'form-inline ml-3 my-2 my-lg-0',
                         ]) !!}
                         {!! Form::hidden('categoryId', $category->id) !!}
-                        {!! Form::search('str', $str, ['class' => 'form-control mr-sm-2', 'placeholder' => 'カテゴリ内スレッド検索']) !!}
+                        {!! Form::search('q', $q ?? '', ['class' => 'form-control mr-sm-2', 'placeholder' => 'カテゴリ内スレッド検索']) !!}
                         {!! Form::button('検索', [
                             'class' => 'btn btn-dark my-2 my-sm-0',
                             'type' => 'submit',
@@ -45,7 +45,7 @@
                 <div class="card-body">
                     <h3 class="card-title font-weight-bold mb-4"><span>スレッドの検索結果</span></h3>
                     <h4 class="card-title font-weight-bold "><span>検索カテゴリ：{{ $category->name }}</span></h4>
-                    <h4 class="card-title font-weight-bold "><span>検索文字列：「{{ $str }}」</span></h4>
+                    <h4 class="card-title font-weight-bold "><span>検索文字列：「{{ $q }}」</span></h4>
                     @if ($threads_count > 0)
                         <h4 class="card-title font-weight-bold "><span>{{ $threads_count }}件ヒットしました。</span></h4>
                     @else

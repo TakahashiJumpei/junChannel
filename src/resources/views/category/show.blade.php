@@ -28,7 +28,7 @@
                             'class' => 'form-inline ml-3 my-2 my-lg-0',
                         ]) !!}
                         {!! Form::hidden('categoryId', $category->id) !!}
-                        {!! Form::search('str', '', ['class' => 'form-control mr-sm-2', 'placeholder' => 'カテゴリ内スレッド検索']) !!}
+                        {!! Form::search('q', $q ?? '', ['class' => 'form-control mr-sm-2', 'placeholder' => 'カテゴリ内スレッド検索']) !!}
                         {!! Form::button('検索', [
                             'class' => 'btn btn-dark my-2 my-sm-0',
                             'type' => 'submit',

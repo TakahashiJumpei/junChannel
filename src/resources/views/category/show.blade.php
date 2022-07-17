@@ -13,7 +13,10 @@
         <div class="h3 mt-5 mb-3">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title font-weight-bold"><span>{{ $category->name }}</span></h3>
+                    <div class="d-flex justify-content-between">
+                        <h3 class="card-title font-weight-bold"><span>{{ $category->name }}</span></h3>
+                        <span class="card-text join-category">全{{ $concatenated_threads_count }}件</span>
+                    </div>
                     <div class="d-flex justify-content-start align-items-center">
                         {{-- 新規スレッド作成 --}}
                         {{-- レスポンシブ対応は優先的に --}}
@@ -89,6 +92,9 @@
         tr {
             background-color: white;
         }
-    </style>
 
+        .join-category {
+            font-size: 16px;
+        }
+    </style>
 @endsection

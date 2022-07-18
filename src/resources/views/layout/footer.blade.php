@@ -6,7 +6,7 @@
                     <a href="{{ url('tos') }}" role="button" class="btn btn-link text-muted">利用規約</a>
                 </div>
                 <div class="text-center">
-                    <a href="{{ url('privacy-policy') }}" role="button" class="btn btn-link text-muted">プライバシーポリシー</a>
+                    <a href="{{ url('privacy_policy') }}" role="button" class="btn btn-link text-muted">プライバシーポリシー</a>
                 </div>
                 <div class="text-center" style="text-indent:-2em;">
                     <a href="{{ url('#') }}" role="button" class="btn btn-link text-muted">お問い合わせ</a>

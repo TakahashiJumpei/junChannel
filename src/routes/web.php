@@ -52,3 +52,7 @@ Route::get('search', 'App\Http\Controllers\SearchController');
 Route::get('tos', function () {
   return view('tos');
 });
+
+Route::get('privacy_policy', function () {
+  return view('privacy_policy');
+});

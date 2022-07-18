@@ -252,7 +252,8 @@
                         <ul class="tos-item-explanation">
                             <p>本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。</p>
                             <li class="flex">
-                                <a href="#" target="blank">
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-XPGvWdCzaNzelP5cyb_pwIAnGkMPo-ECCSBvR0TIc8qLfA/viewform?usp=sf_link"
+                                    target="blank">
                                     <p style="color:#cf5271; font-weight:bold;">お問い合わせ</p>
                                 </a>
                             </li>

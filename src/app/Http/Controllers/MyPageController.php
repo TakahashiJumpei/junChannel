@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Thread;
 use App\Models\Comment;
+use App\Models\Category;
 use Illuminate\Support\Facades\Log;
 
 use App\Http\Requests\MyPageUpdateRequest;
@@ -35,6 +36,9 @@ class MyPageController extends Controller
           Log::info('$recently_comment_datetime', [$recently_comment_datetime]);
           $created_thread->recently_comment_datetime = $recently_comment_datetime->created_at;
         }
+        //各スレッドに対してカテゴリ名を紐づける
+        $category = Category::where('id', $created_thread->category_id)->first();
+        $created_thread->category_name = $category->name;
       }
     }
 
@@ -61,6 +65,10 @@ class MyPageController extends Controller
         $recently_comment_datetime = Comment::orderBy('id', 'DESC')->where('thread_id', $commented_thread->id)->first();
         Log::info('$recently_comment_datetime', [$recently_comment_datetime]);
         $commented_thread->recently_comment_datetime = $recently_comment_datetime->created_at;
+
+        //各スレッドに対してカテゴリ名を紐づける
+        $category = Category::where('id', $commented_thread->category_id)->first();
+        $commented_thread->category_name = $category->name;
       }
       //dd($recently_commented_threads);
     }

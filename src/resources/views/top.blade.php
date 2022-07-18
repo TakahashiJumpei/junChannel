@@ -49,6 +49,11 @@
                                         </div>
                                     @else
                                     @endif
+                                    <div class="ml-3">
+                                        [ <a
+                                            href="{{ url('category/show', $recently_created_thread->category_id) }}">{{ $recently_created_thread->category_name }}</a>
+                                        ]
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -85,6 +90,11 @@
                                     <div class="ml-2">
                                         {{ $recently_commented_thread->recently_comment_datetime->format('m月d日 H:i') }}
                                     </div>
+                                    <div class="ml-3">
+                                        [ <a
+                                            href="{{ url('category/show', $recently_commented_thread->category_id) }}">{{ $recently_commented_thread->category_name }}</a>
+                                        ]
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -104,5 +114,11 @@
         {{-- カテゴリ一覧の表示 --}}
 
     </div>
+
+    <style>
+        tr {
+            background-color: white;
+        }
+    </style>
 
 @endsection

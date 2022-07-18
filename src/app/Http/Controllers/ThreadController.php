@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Comment;
 use App\Models\Guest;
 use App\Http\Requests\ThreadRequest;
+use App\Http\Requests\CommentRequest;
 
 use Auth;
 
@@ -23,6 +24,7 @@ class ThreadController extends Controller
     //ユーザテーブルから表示中のスレッドIDに引っかかるユーザのみを抽出
     $category = Category::where('id', $thread->category_id)->first();
     Log::info('$category', [$category]);
+    $categoryId = $thread->category_id;
 
     //ユーザテーブルから表示中のスレッドIDに引っかかるユーザのみを抽出
     $created_user = User::where('id', $thread->creater_id)->first();
@@ -35,7 +37,11 @@ class ThreadController extends Controller
 
     //このスレッドに紐づいているコメントをすべて取得
     $comments = Comment::where('thread_id', $thread->id)->get();
+    $comment_count = Comment::where('thread_id', $thread->id)->get()->count();
     Log::info('$comments', [$comments]);
+    Log::info('$comment_count', [$comment_count]);
+    //dd($comment_count);
+
     if ($comments->isEmpty()) {
       Log::info('$commentsは空です');
       $comments = null;
@@ -60,7 +66,7 @@ class ThreadController extends Controller
     }
     Log::info('$categories', [$categories]);
 
-    return view('thread.show', compact('thread', 'category', 'created_user', 'user', 'comments', 'categories'));
+    return view('thread.show', compact('categoryId', 'thread', 'category', 'created_user', 'user', 'comments', 'comment_count', 'categories'));
   }
 
   public function post($categoryId = null)
@@ -103,8 +109,10 @@ class ThreadController extends Controller
     // return redirect()->route('thread.show', ['threadId' => $thread->id]);
   }
 
-  public function commentPost(Request $request)
+  public function commentPost(CommentRequest $request)
   {
+    //コメント欄で空で入力した際にDBエラーとなるのでバリデーションする
+    //$validatedRequest = $request->validated();
     /**
      * スレッドにコメントを投稿
      * コメントテーブルにコメントを新規追加する処理

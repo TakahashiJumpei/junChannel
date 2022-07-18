@@ -73,6 +73,11 @@
                                         </div>
                                     @else
                                     @endif
+                                    <div class="ml-3">
+                                        [ <a
+                                            href="{{ url('category/show', $created_thread->category_id) }}">{{ $created_thread->category_name }}</a>
+                                        ]
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -108,6 +113,11 @@
                                     <div class="ml-2">
                                         {{ $commented_thread->recently_comment_datetime->format('m月d日 H:i') }}
                                     </div>
+                                    <div class="ml-3">
+                                        [ <a
+                                            href="{{ url('category/show', $commented_thread->category_id) }}">{{ $commented_thread->category_name }}</a>
+                                        ]
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -122,7 +132,7 @@
             </table>
         </div>
 
-        <div class="mb-5">
+        {{-- <div class="mb-5">
             <table class="table">
                 <thead class="table-bordered table-sm thead-light">
                     <tr>
@@ -151,38 +161,14 @@
                     @endif
                 </tbody>
             </table>
-        </div>
-
-        {{-- <table class="table">
-    <thead class="table-bordered table-sm thead-light">
-        <tr>
-            <th colspan="1">
-                作成したスレッド一覧
-            </th>
-            <th colspan="1">
-                コメントしたスレッド一覧
-            </th>
-            <th colspan="1">
-                お気に入りしたスレッド一覧
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <button type="button" class="btn btn-link">スレッド1</button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-link">スレッド15</button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-link">スレッド39</button>
-            </td>
-        </tr>
-    </tbody>
-</table> --}}
-
+        </div> --}}
 
 
     </div>
+
+    <style>
+        tr {
+            background-color: white;
+        }
+    </style>
 @endsection

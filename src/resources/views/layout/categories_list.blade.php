@@ -2,7 +2,7 @@
 
     {{-- カテゴリ一覧の表示 --}}
     {{-- 基本はスクロールですべて辿れるようにする --}}
-    <div class="col-md-3">
+    <div class="side-bar col-lg-3 d-none d-lg-block">
         <div class="mt-5 mb-5">
             <table class="table table-fixed table_sticky">
                 <thead class="table-bordered table-sm thead-light">
@@ -64,7 +64,7 @@
             text-decoration: none;
         }
 
-        .col-md-3 {
+        .side-bar {
             position: sticky !important;
             height: 65vh;
             top: 48px !important;

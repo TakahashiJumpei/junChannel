@@ -9,14 +9,14 @@
 
     @include('layout.categories_list')
 
-    <div class="col-md-9">
+    <div class="col-lg-9">
 
         {{-- じゅんちゃんねるの簡単な紹介 --}}
         <div class="h3 mt-5 mb-5">
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title font-weight-bold mb-4"><span>じゅんちゃんねるについて</span></h3>
-                    <h5 class="card-text mb-3">
+                    <h5 class="card-text">
                         じゅんちゃんねるは某有名掲示板を真似た匿名掲示板です。<br>スレッドでのコメントを通じて趣味が合う者同士（雑談でも何でもOK）の楽しい交流の場として利用していただけると管理人としても嬉しいです。<br>基本的にお好きにご利用いただいて構いませんが、最低限のマナーを守って利用しましょう！
                         </h4>
                 </div>
@@ -39,20 +39,28 @@
                         @foreach ($recently_created_threads as $recently_created_thread)
                             <tr>
                                 <td class="d-flex justify-content-start align-items-center">
-                                    <div class="ml-2">[{{ $loop->index + 1 }}]</div>
-                                    <a href="{{ url('thread/show', $recently_created_thread->id) }}"
-                                        class="btn btn-link">{{ $recently_created_thread->name }}</a>
-                                    <div class="ml-2">（{{ $recently_created_thread->count_comment }}件）</div>
-                                    @if (isset($recently_created_thread->recently_comment_datetime))
-                                        <div class="ml-2">
-                                            {{ $recently_created_thread->recently_comment_datetime->format('m月d日 H:i') }}
+                                    <div>
+                                        <span class="ml-2">[{{ $loop->index + 1 }}]</span>
+                                    </div>
+                                    <div class="d-md-flex justify-content-start align-items-center">
+                                        <div>
+                                            <a href="{{ url('thread/show', $recently_created_thread->id) }}"
+                                                class="btn btn-link">{{ $recently_created_thread->name }}</a>
                                         </div>
-                                    @else
-                                    @endif
-                                    <div class="ml-3">
-                                        [ <a
-                                            href="{{ url('category/show', $recently_created_thread->category_id) }}">{{ $recently_created_thread->category_name }}</a>
-                                        ]
+                                        <div>
+                                            <span class="ml-2">（{{ $recently_created_thread->count_comment }}件）</span>
+                                            @if (isset($recently_created_thread->recently_comment_datetime))
+                                                <span class="ml-2">
+                                                    {{ $recently_created_thread->recently_comment_datetime->format('m月d日 H:i') }}
+                                                </span>
+                                            @else
+                                            @endif
+                                            <span class="ml-3 td-category">
+                                                [ <a
+                                                    href="{{ url('category/show', $recently_created_thread->category_id) }}">{{ $recently_created_thread->category_name }}</a>
+                                                ]
+                                            </span>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -83,17 +91,25 @@
                         @foreach ($recently_commented_threads as $recently_commented_thread)
                             <tr>
                                 <td class="d-flex justify-content-start align-items-center">
-                                    <div class="ml-2">[{{ $loop->index + 1 }}]</div>
-                                    <a href="{{ url('thread/show', $recently_commented_thread->id) }}"
-                                        class="btn btn-link">{{ $recently_commented_thread->name }}</a>
-                                    <div class="ml-2">（{{ $recently_commented_thread->count_comment }}件）</div>
-                                    <div class="ml-2">
-                                        {{ $recently_commented_thread->recently_comment_datetime->format('m月d日 H:i') }}
+                                    <div>
+                                        <span class="ml-2">[{{ $loop->index + 1 }}]</span>
                                     </div>
-                                    <div class="ml-3">
-                                        [ <a
-                                            href="{{ url('category/show', $recently_commented_thread->category_id) }}">{{ $recently_commented_thread->category_name }}</a>
-                                        ]
+                                    <div class="d-md-flex justify-content-start align-items-center">
+                                        <div>
+                                            <a href="{{ url('thread/show', $recently_commented_thread->id) }}"
+                                                class="btn btn-link">{{ $recently_commented_thread->name }}</a>
+                                        </div>
+                                        <div>
+                                            <span class="ml-2">（{{ $recently_commented_thread->count_comment }}件）</span>
+                                            <span class="ml-2">
+                                                {{ $recently_commented_thread->recently_comment_datetime->format('m月d日 H:i') }}
+                                            </span>
+                                            <span class="ml-3 td-category">
+                                                [ <a
+                                                    href="{{ url('category/show', $recently_commented_thread->category_id) }}">{{ $recently_commented_thread->category_name }}</a>
+                                                ]
+                                            </span>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -116,8 +132,43 @@
     </div>
 
     <style>
+        @media screen and (max-width:450px) {
+
+            .card-title {
+                font-size: 18px !important;
+            }
+
+            .card-text {
+                font-size: 14px !important;
+            }
+        }
+
+
         tr {
             background-color: white;
+        }
+
+        table {
+            table-layout: fixed;
+            width: 100%;
+            word-break: break-all;
+            word-wrap: break-all;
+        }
+
+        @media screen and (max-width:450px) {
+
+            table {
+                font-size: 12px !important;
+            }
+
+            table a {
+                font-size: 14px !important;
+            }
+
+            table .td-category a {
+                font-size: 12px !important;
+            }
+
         }
     </style>
 

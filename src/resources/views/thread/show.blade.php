@@ -8,10 +8,10 @@
 
     @include('layout.categories_list')
 
-    <div class="col-md-9">
+    <div class="col-lg-9">
         {{-- スレッド表題 --}}
         <div class="h3 mt-5 mb-5">
-            <div class="card">
+            <div class="card thread-title">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="card-text join-category">カテゴリ：{{ $category->name }}</span>
@@ -29,7 +29,7 @@
         {{-- 表示数の設定機能（「全部」、「最新５０件」、「1-100」のページング） --}}
         {{-- 表示中スレッドのコメント数を表示 --}}
         <div class="d-flex justify-content-end align-items-center">
-            <h5 class="card-text">全{{ $comment_count }}件</h5>
+            <h5 class="card-text comment-count">全{{ $comment_count }}件</h5>
         </div>
 
         {{-- コメント一覧 --}}
@@ -47,20 +47,20 @@
         <div class="h3 mt-2 mb-3">
             @if ($comments)
                 @foreach ($comments as $comment)
-                    <div class="card">
+                    <div class="card res">
                         <div class="card-body">
-                            <h4 class="font-weight-bold mb-4 d-flex align-items-center">
+                            <h4 class="font-weight-bold mb-4">
                                 {{-- <a href="#" class="mr-3 link-primary">#{{ $comment->comment_number }}</a> --}}
                                 {{-- ↑コメント引用機能のための改修をDB側に搭載できれば差し替える --}}
-                                <div class="mr-3 link-primary">#{{ $comment->comment_number }}</div>
+                                <span class="mr-3 link-primary">#{{ $comment->comment_number }}</span>
                                 @if ($comment->guests_commenter_id === 'notGuest')
-                                    <div class="mr-3">{{ $comment->commenter_nickname }}</div>
+                                    <span class="mr-3">{{ $comment->commenter_nickname }}</span>
                                 @else
-                                    <div class="mr-3">名無しさん</div>
+                                    <span class="mr-3">名無しさん</span>
                                 @endif
-                                <div class="mr-3">{{ $comment->created_at }}</div>
+                                <span class="mr-3">{{ $comment->created_at }}</span>
                                 @if ($loop->last)
-                                    <div class="font-weight-normal text-secondary">（最新コメント）</div>
+                                    <span class="font-weight-normal text-secondary">（最新コメント）</span>
                                 @endif
                             </h4>
                             <h4 class="card-text mb-3">{{ $comment->content }} </h4>
@@ -77,8 +77,11 @@
         </div>
 
         {{-- 新着コメントを表示ボタン --}}
-        <div class="d-flex justify-content-center mt-4">
+        <div class="d-sm-flex justify-content-center mt-4 d-none">
             <a href="{{ url('thread/show', $thread->id) }}" class="btn btn-dark btn-lg">新着コメントを表示</a>
+        </div>
+        <div class="d-flex justify-content-center mt-4 d-sm-none">
+            <a href="{{ url('thread/show', $thread->id) }}" class="btn btn-dark btn-md">新着コメントを表示</a>
         </div>
 
 
@@ -103,7 +106,7 @@
         @endif
 
         <div class="h3 mt-5 mb-3">
-            <div class="card">
+            <div class="card commnet-form">
                 <div class="card-body">
                     <p class="card-title font-weight-bold mb-4"><span>コメントを投稿</span></p>
                     @php
@@ -131,9 +134,12 @@
                         'placeholder' => 'コメント内容を入力',
                         'rows' => '5',
                     ]) !!}
-                    <div class="d-flex justify-content-center mt-4">
+                    <div class="d-sm-flex justify-content-center mt-4 d-none">
                         {!! Form::submit('コメントを投稿する', ['class' => 'btn btn-dark btn-lg']) !!}
                     </div>
+                    <div class="d-flex justify-content-center mt-4 d-sm-none">
+                      {!! Form::submit('コメントを投稿する', ['class' => 'btn btn-dark btn-mg']) !!}
+                  </div>
                 </div>
             </div>
         </div>
@@ -151,6 +157,39 @@
 
         .error-text {
             font-size: 16px;
+        }
+
+        @media screen and (max-width:450px) {
+
+            .thread-title .card-body .card-title {
+                font-size: 20px !important;
+            }
+
+            .thread-title .card-body .card-text {
+                font-size: 17px !important;
+            }
+
+            .comment-count {
+                font-size: 16px !important;
+            }
+
+            .res .card-body h4 {
+                font-size: 16px !important;
+            }
+
+            .res .card-body .card-text {
+                font-size: 16px !important;
+            }
+
+            .commnet-form .card-body .card-title {
+                font-size: 20px !important;
+            }
+
+            .commnet-form .card-body h5 {
+                font-size: 16px !important;
+            }
+
+
         }
     </style>
 

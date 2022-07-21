@@ -40,10 +40,10 @@
                             value='{{ $password }}'>
                     </div>
                     {!! Form::hidden('password_confirmation', $password) !!}
-                    <div>
+                    <div class="form-button">
                         {!! Form::submit('登録', ['name' => 'action', 'class' => 'btn btn-primary mt-3']) !!}
                     </div>
-                    <div>
+                    <div class="form-button">
                         {!! Form::submit('修正', ['name' => 'action', 'class' => 'btn btn-secondary mt-3 back']) !!}
                     </div>
                     {!! Form::close() !!}
@@ -64,6 +64,32 @@
 
         .back {
             width: 300px !important;
+        }
+
+        @media screen and (max-width:320px) {
+
+            .form-group input {
+                width: 250px !important;
+                margin: 0 auto;
+            }
+
+            .form-group label {
+                width: 250px !important;
+                margin: 0 auto;
+                margin-bottom: 0px !important;
+            }
+
+            .form-button input {
+                width: 250px !important;
+                margin: 0 auto;
+            }
+
+            .form-button .back {
+                width: 250px !important;
+                margin: 0 auto;
+                margin-bottom: 0px !important;
+            }
+
         }
     </style>
 @endsection

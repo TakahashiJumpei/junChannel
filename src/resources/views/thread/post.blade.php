@@ -59,8 +59,12 @@
     </div>
 
     <style>
-      label {
-          margin-bottom: 0px !important;
-      }
-  </style>
+        label {
+            margin-bottom: 0px !important;
+        }
+
+        .form-group input {
+            width: 100% !important;
+        }
+    </style>
 @endsection

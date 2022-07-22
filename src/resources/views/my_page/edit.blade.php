@@ -102,6 +102,10 @@
 
         @media screen and (max-width:450px) {
 
+            table {
+                font-size: 12px !important;
+            }
+
             .mypage-title {
                 font-size: 26px !important;
             }

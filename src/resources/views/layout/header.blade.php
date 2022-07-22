@@ -8,6 +8,13 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ url('category') }}">
+                            カテゴリ一覧
+                        </a>
+                    </li>
+                </ul>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link text-light" href="{{ url('thread/post') }}">
@@ -76,7 +83,7 @@
 
         @media screen and (min-width:450px) {
             input {
-                width: 400px !important;
+                width: 350px !important;
             }
         }
     </style>

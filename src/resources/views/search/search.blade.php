@@ -14,13 +14,13 @@
         <div class="h3 mt-5 mb-5">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title font-weight-bold mb-4"><span>スレッドの検索結果</span></h3>
-                    <h4 class="card-title font-weight-bold "><span>検索文字列：「{{ $str }}」</span></h4>
+                    <h3 class="card-title font-weight-bold mb-4 condition-title"><span>スレッドの検索結果</span></h3>
+                    <h4 class="font-weight-bold condition-str"><span>検索文字列：「{{ $str }}」</span></h4>
                     @if ($concatenated_threads_count > 0)
-                        <h4 class="card-title font-weight-bold "><span>{{ $concatenated_threads_count }}件ヒットしました。</span>
+                        <h4 class="font-weight-bold condition-result"><span>{{ $concatenated_threads_count }}件ヒットしました。</span>
                         </h4>
                     @else
-                        <h4 class="card-title font-weight-bold "><span>検索条件に合致するスレッドは見つかりませんでした。</span></h4>
+                        <h4 class="font-weight-bold condition-result"><span>検索条件に合致するスレッドは見つかりませんでした。</span></h4>
                     @endif
                 </div>
             </div>
@@ -41,28 +41,104 @@
                             <tr>
                                 {{-- 所属するカテゴリも表示させる --}}
                                 <td class="d-flex justify-content-start align-items-center">
-                                    <div class="ml-2">[{{ $loop->index + 1 }}]</div>
-                                    <a href="{{ url('thread/show', $concatenated_thread->id) }}"
-                                        class="btn btn-link">{{ $concatenated_thread->name }}</a>
-                                    @if (isset($concatenated_thread->count_comment))
-                                        <div class="ml-2">（{{ $concatenated_thread->count_comment }}件）</div>
-                                    @else
-                                        <div class="ml-2">（0件）</div>
-                                    @endif
-                                    @if (isset($concatenated_thread->recently_comment_datetime))
-                                        <div class="ml-2">
-                                            {{ $concatenated_thread->recently_comment_datetime->format('m月d日 H:i') }}
+                                    <div>
+                                        <span class="ml-2">[{{ $loop->index + 1 }}]</span>
+                                    </div>
+                                    <div class="d-md-flex justify-content-start align-items-center">
+                                        <div>
+                                            <a href="{{ url('thread/show', $concatenated_thread->id) }}"
+                                                class="btn btn-link">{{ $concatenated_thread->name }}</a>
                                         </div>
-                                    @else
-                                    @endif
+                                        <div>
+                                            @if (isset($concatenated_thread->count_comment))
+                                                <span class="ml-2">（{{ $concatenated_thread->count_comment }}件）</span>
+                                            @else
+                                                <span class="ml-2">（0件）</span>
+                                            @endif
+                                            @if (isset($concatenated_thread->recently_comment_datetime))
+                                                <span class="ml-2">
+                                                    {{ $concatenated_thread->recently_comment_datetime->format('m月d日 H:i') }}
+                                                </span>
+                                            @else
+                                            @endif
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
-
                     </tbody>
                 </table>
             </div>
         @endif
     </div>
+
+    <style>
+        .join-category {
+            font-size: 16px;
+        }
+
+        a.text-dark:hover {
+            color: #ccc !important;
+            text-decoration: none;
+        }
+
+        table {
+            table-layout: fixed;
+            width: 100%;
+            word-break: break-all;
+            word-wrap: break-all;
+        }
+
+        tr {
+            background-color: white;
+        }
+
+        input.category-search {
+            width: 350px !important;
+        }
+
+        @media screen and (max-width:550px) {
+
+            input.category-search {
+                width: 300px !important;
+            }
+        }
+
+        @media screen and (max-width:450px) {
+
+            input.category-search {
+                width: 200px !important;
+            }
+
+            table {
+                font-size: 12px !important;
+            }
+
+            table a {
+                font-size: 14px !important;
+            }
+
+            table .td-category a {
+                font-size: 12px !important;
+            }
+
+            .condition-title {
+                font-size: 20px !important;
+            }
+
+            .condition-category {
+                font-size: 16px !important;
+            }
+
+            .condition-str {
+                font-size: 16px !important;
+            }
+
+            .condition-result {
+                font-size: 16px !important;
+            }
+
+        }
+    </style>
 
 @endsection

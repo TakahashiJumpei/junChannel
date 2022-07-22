@@ -61,5 +61,18 @@
         label {
             margin-bottom: 0px !important;
         }
+
+        @media screen and (max-width:320px) {
+
+            input {
+                width: 250px !important;
+            }
+
+            label {
+                width: 250px !important;
+                margin-bottom: 0px !important;
+            }
+
+        }
     </style>
 @endsection

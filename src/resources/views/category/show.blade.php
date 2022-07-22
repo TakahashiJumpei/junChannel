@@ -21,7 +21,8 @@
                         @endif
                     </div>
                     <div class="d-lg-flex justify-content-start align-items-center">
-                        <a href="{{ url('thread/post', $category->id) }}" class="btn btn-dark btn">新規スレッド作成</a>
+                        {{-- 新規スレッド作成 --}}
+                        <a href="{{ url('thread/post', $category->id) }}" class="btn btn-dark">新規スレッド作成</a>
                         {{-- このカテゴリ内のスレッド検索 --}}
                         <div class="d-flex justify-content-start">
                             {!! Form::open([

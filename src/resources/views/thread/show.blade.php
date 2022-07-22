@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', $thread->name . ' - ' . config("app.name"))
+@section('title', $thread->name . ' - ' . config('app.name'))
 @include('layout.header')
 @include('layout.footer')
 
@@ -70,7 +70,7 @@
             @else
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-text">このスレッドにまだコメントはありません。<br>最初のコメントを投稿してみよう！</h4>
+                        <h4 class="card-text nothing-comment">このスレッドにまだコメントはありません。<br>最初のコメントを投稿してみよう！</h4>
                     </div>
                 </div>
             @endif
@@ -138,8 +138,8 @@
                         {!! Form::submit('コメントを投稿する', ['class' => 'btn btn-dark btn-lg']) !!}
                     </div>
                     <div class="d-flex justify-content-center mt-4 d-sm-none">
-                      {!! Form::submit('コメントを投稿する', ['class' => 'btn btn-dark btn-mg']) !!}
-                  </div>
+                        {!! Form::submit('コメントを投稿する', ['class' => 'btn btn-dark btn-mg']) !!}
+                    </div>
                 </div>
             </div>
         </div>
@@ -171,6 +171,10 @@
 
             .comment-count {
                 font-size: 16px !important;
+            }
+
+            .nothing-comment {
+                font-size: 14px !important;
             }
 
             .res .card-body h4 {

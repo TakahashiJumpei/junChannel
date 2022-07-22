@@ -46,6 +46,7 @@ Route::post('thread/show/{threadId}', 'App\Http\Controllers\ThreadController@com
 
 Route::get('category/show/{categoryId}', 'App\Http\Controllers\CategoryController@show')->name('category.show');
 Route::get('category/search', 'App\Http\Controllers\CategoryController@search');
+Route::get('categories', 'App\Http\Controllers\CategoryController@list');
 
 Route::get('search', 'App\Http\Controllers\SearchController');
 

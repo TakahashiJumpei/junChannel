@@ -184,4 +184,18 @@ class CategoryController extends Controller
 
     return view('category.search', compact('q', 'category', 'categories', 'concatenated_threads', 'concatenated_threads_count'));
   }
+
+  public function list(Request $request)
+  {
+
+    // DBからすべてのカテゴリを取得
+    $categories = Category::get();
+    if ($categories->isEmpty()) {
+      $categories = null;
+    }
+    Log::info('$categories', [$categories]);
+    //dd($categories);
+
+    return view('category.list', compact('categories'));
+  }
 }

@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'じゅんちゃんねる')
+@section('title', config("app.name"))
 @include('layout.header')
 @include('layout.footer')
 

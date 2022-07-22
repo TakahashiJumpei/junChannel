@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', "{$category->name}")
+@section('title', $category->name . ' - ' . config("app.name"))
 @include('layout.header')
 @include('layout.footer')
 

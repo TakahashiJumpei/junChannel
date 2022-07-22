@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'カテゴリ一覧')
+@section('title', 'カテゴリ一覧 - ' . config("app.name"))
 @include('layout.header')
 @include('layout.footer')
 

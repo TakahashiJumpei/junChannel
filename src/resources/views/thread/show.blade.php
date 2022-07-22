@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', "{$thread->name}")
+@section('title', $thread->name . ' - ' . config("app.name"))
 @include('layout.header')
 @include('layout.footer')
 

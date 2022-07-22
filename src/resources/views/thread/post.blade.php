@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'スレッド作成')
+@section('title', 'スレッドの作成 - ' . config("app.name"))
 @include('layout.header')
 @include('layout.footer')
 

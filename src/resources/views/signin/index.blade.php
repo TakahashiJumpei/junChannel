@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'マイページ')
+@section('title', 'ログイン - ' . config("app.name"))
 @include('layout.header')
 @include('layout.footer')
 

@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ url('category') }}">
+                        <a class="nav-link text-light" href="{{ url('categories') }}">
                             カテゴリ一覧
                         </a>
                     </li>

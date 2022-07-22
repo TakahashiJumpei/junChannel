@@ -74,7 +74,7 @@
         .table_sticky {
             display: block;
             overflow-y: auto;
-            height: 65vh;
+            max-height: calc(100vh - 300px);
             border-collapse: collapse;
         }
 

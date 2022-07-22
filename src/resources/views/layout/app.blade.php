@@ -27,4 +27,11 @@
     @yield('footer')
 </body>
 
+<style>
+    .container {
+        min-height: calc(100vh - 265px);
+    }
+</style>
+
+
 </html>

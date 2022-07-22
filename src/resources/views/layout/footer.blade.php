@@ -1,6 +1,6 @@
 @section('footer')
     <footer class="footer bg-white mt-5">
-        <div class="container">
+        {{-- <div class="container"> --}}
             <div class="text-muted pt-3 pb-3">
                 <div class="text-center" style="text-indent:-3em;">
                     <a href="{{ url('tos') }}" role="button" class="btn btn-link text-muted">利用規約</a>
@@ -15,6 +15,6 @@
                 <small class="d-block text-center" style="padding-left:12px; text-indent:-2em;"">Copyright © 2020-2022
                     nakazaway & jump All Rights Reserved.</small>
             </div>
-        </div>
+        {{-- </div> --}}
     </footer>
 @endsection

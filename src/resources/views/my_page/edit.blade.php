@@ -88,8 +88,8 @@
             width: 30%;
         }
 
-        th.width40 {
-            width: 40%;
+        th.width70 {
+            width: 70%;
         }
 
         tr {

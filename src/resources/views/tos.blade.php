@@ -368,6 +368,26 @@
         .index {
             display: inline-block;
         }
+
+        @media screen and (max-width:450px) {
+            .title {
+                font-size: 120%;
+            }
+
+            .tos-explanation-container {
+                font-size: 50%;
+
+            }
+
+            .tos-item-explanation {
+                font-size: 50%;
+            }
+
+            .tos-item-title {
+                font-size: 80%;
+            }
+
+        }
     </style>
 
 @endsection
